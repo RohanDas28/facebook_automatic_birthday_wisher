@@ -1,10 +1,15 @@
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager 
+from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.common.keys import Keys
 import getpass
-
+# Download and Install The Webdriver Automatically Using WebDriver_Manager Module (pip install webdriver_manager)
+try:
+	driver = webdriver.Chrome(ChromeDriverManager().install())
+except:
+	driver = webdriver.Firefox(executable_path=GeckoDriverManager().install())
 id = input('Enter your Email ID or Phone No. - ')
 key = getpass.getpass('Enter your Password - ')
-driver = webdriver.Chrome("F:\\python projects\\selenium web\\chromedriver.exe")
 driver.set_page_load_timeout(10)
 driver.get("https://facebook.com")
 driver.maximize_window()
